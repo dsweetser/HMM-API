@@ -17,3 +17,10 @@
 #                password: 'abc123',
 #                password_confirmation: nil)
 # end
+Game.transaction do
+  %w(Splendor Carverna Dominion).each do |n|
+    name = n
+    next if Game.exists? name: name
+    Game.create!(name: name)
+  end
+end
