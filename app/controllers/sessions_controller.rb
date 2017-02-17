@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SessionsController < ApplicationController
+class SessionsController < OpenReadController
   before_action :set_session, only: [:show, :update, :destroy]
   def index
     @sessions = Session.all
