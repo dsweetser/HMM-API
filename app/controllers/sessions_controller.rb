@@ -30,6 +30,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    @session.destroy
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_session
     @session = Session.find(params[:id])
