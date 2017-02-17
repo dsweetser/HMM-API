@@ -22,6 +22,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  def update
+    if @session.update(session_params)
+      render json: @session
+    else
+      render json: @session.errors, status: :unprocessable_entity
+    end
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_session
     @session = Session.find(params[:id])
