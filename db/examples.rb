@@ -11,12 +11,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # creates sample users
-%w(Dan Qusai Nick Dennis).each do |name|
-  email = "#{name}@#{name}.com"
-  next if User.exists? email: email
-  User.create!(email: email,
-               password: 'abc123',
-               password_confirmation: nil)
+User.transaction do
+  %w(Dan Qusai Nick Dennis).each do |name|
+    email = "#{name}@#{name}.com"
+    next if User.exists? email: email
+    User.create!(email: email,
+                 password: 'abc123',
+                 password_confirmation: nil)
+  end
 end
 
 # creates sample games
@@ -25,5 +27,18 @@ Game.transaction do
     name = n
     next if Game.exists? name: name
     Game.create!(name: name)
+  end
+end
+
+Session.transaction do
+  20.times do
+    session_params = {
+      user: User.all.sample,
+      game: Game.all.sample,
+      rating: rand(1..5),
+      players: rand(2..4)
+    }
+    next if Session.exists? session_params
+    Session.create!(session_params)
   end
 end
