@@ -31,7 +31,12 @@ class SessionsController < OpenReadController
   end
 
   def destroy
-    @session.destroy if @session.uiser_id == current_user.id
+    puts @session.user_id, current_user.id
+    if @session.user_id == current_user.id
+      @session.destroy
+    else
+      render json: @session.errors, status: :unprocessable_entity
+    end
   end
 
   # Use callbacks to share common setup or constraints between actions.
