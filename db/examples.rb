@@ -16,14 +16,14 @@ User.transaction do
     email = "#{name}@#{name}.com"
     next if User.exists? email: email
     User.create!(email: email,
-                 password: 'abc123',
+                 password: 'a',
                  password_confirmation: nil)
   end
 end
 
 # creates sample games
 Game.transaction do
-  %w(Splendor Carverna Dominion Takenoko).each do |n|
+  %w(Splendor Caverna Dominion Takenoko).each do |n|
     name = n
     next if Game.exists? name: name
     Game.create!(name: name)

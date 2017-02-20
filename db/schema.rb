@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170217151740) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.text     "name"
+    t.text     "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

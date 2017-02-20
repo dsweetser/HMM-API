@@ -23,7 +23,7 @@ class SessionsController < OpenReadController
   end
 
   def update
-    if @session.update(session_params)
+    if (@session.user_id == current_user.id) && @session.update(session_params)
       render json: @session
     else
       render json: @session.errors, status: :unprocessable_entity
@@ -31,7 +31,7 @@ class SessionsController < OpenReadController
   end
 
   def destroy
-    @session.destroy
+    @session.destroy if @session.uiser_id == current_user.id
   end
 
   # Use callbacks to share common setup or constraints between actions.
