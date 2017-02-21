@@ -1,7 +1,7 @@
 # frozen_string_literal:true
 
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :update]
+  before_action :set_game, only: [:show]
 
   # GET /games
   def index
@@ -27,13 +27,13 @@ class GamesController < ApplicationController
   end
 
   # PATCH/PUT /games/1
-  def update
-    if @game.update(game_params)
-      render json: @game
-    else
-      render json: @game.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @game.update(game_params)
+  #     render json: @game
+  #   else
+  #     render json: @game.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /games/1
   # def destroy

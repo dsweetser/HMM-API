@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
   resources :sessions, except: [:new, :edit]
-  resources :games, only: [:index, :show, :create, :update]
+  resources :games, only: [:index, :show, :create]
   resources :examples, except: [:new, :edit]
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
