@@ -2,6 +2,13 @@
 
 class SessionsController < OpenReadController
   before_action :set_session, only: [:show, :update, :destroy]
+
+  def single_index
+    @sessions = current_user.sessions
+
+    render json: @sessons
+  end
+
   def index
     @sessions = Session.all
 
@@ -13,7 +20,7 @@ class SessionsController < OpenReadController
   end
 
   def create
-    @session = Session.new(session_params)
+    @session = current_user.sessions.build(session_params)
 
     if @session.save
       render json: @session, status: :created, location: @session
@@ -23,7 +30,7 @@ class SessionsController < OpenReadController
   end
 
   def update
-    if (@session.user_id == current_user.id) && @session.update(session_params)
+    if @session.update(session_params)
       render json: @session
     else
       render json: @session.errors, status: :unprocessable_entity
@@ -31,9 +38,7 @@ class SessionsController < OpenReadController
   end
 
   def destroy
-    puts @session.user_id, current_user.id
-    if @session.user_id == current_user.id
-      @session.destroy
+    if @session.destroy
     else
       render json: @session.errors, status: :unprocessable_entity
     end
@@ -41,14 +46,14 @@ class SessionsController < OpenReadController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_session
-    @session = Session.find(params[:id])
+    @session = current_user.sessions.find(params[:id])
   end
   private :set_session
 
   # Only allow a trusted parameter "white list" through.
   def session_params
-    params.require(:session).permit(:user_id,
-                                    :game_id, :rating, :players, :notes)
+    params.require(:session).permit(:game_id, :rating, :players, :notes)
   end
   private :session_params
+
 end
