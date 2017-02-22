@@ -1,6 +1,6 @@
 # frozen_string_literal:true
 
-class GamesController < ApplicationController
+class GamesController < OpenReadController
   before_action :set_game, only: [:show]
 
   # GET /games
