@@ -2,6 +2,12 @@ This is the readme for the API of How Many Meeples, an app for logging your play
 
 In the future I'd like to define a custom method for sesions that will return only the sessions from a single user.  Additionally, I'd like to create a column within the games table of all the sessions that reference that game and use that data to create average scores across all users for each game.
 
+The App itself can be found here:
+https://dsweetser.github.io/HMM-Front/
+
+and the repo for it can be found
+https://github.com/dsweetser/HMM-Front/
+
 ### Authentication
 
 | Verb   | URI Pattern            | Controller#Action |
