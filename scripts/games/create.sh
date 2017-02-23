@@ -6,11 +6,12 @@ curl "${API}${URL_PATH}" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN" \
   --data '{
     "game": {
       "name": "'"${NAME}"'"
     }
   }'
-#  --header "Authorization: Token token=$TOKEN"
+
 
 echo

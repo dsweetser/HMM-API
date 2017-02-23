@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < OpenReadController
-  before_action :set_session, only: [:show, :update, :destroy]
+  before_action :set_session, only: [:update, :destroy]
 
   def single_index
     @sessions = current_user.sessions
@@ -13,10 +13,6 @@ class SessionsController < OpenReadController
     @sessions = Session.all
 
     render json: @sessions
-  end
-
-  def show
-    render json: @session
   end
 
   def create
@@ -55,5 +51,4 @@ class SessionsController < OpenReadController
     params.require(:session).permit(:game_id, :rating, :players, :notes)
   end
   private :session_params
-
 end

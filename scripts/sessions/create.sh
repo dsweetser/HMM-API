@@ -12,7 +12,7 @@ curl "${API}${URL_PATH}" \
       "game_id": "'"${GAME}"'",
       "user_id": "'"${USER}"'",
       "rating": "'"${RATING}"'",
-      "players": "'"${PLAYERS}"'"
+      "players": "'"${PLAYERS}"'",
       "notes": "'"${NOTES}"'"
     }
   }'
