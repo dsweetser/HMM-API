@@ -1,5 +1,6 @@
-This is the readme for the API of How Many Meeples, an app for tracking your
-optimum game for the number of players you currently have.
+This is the readme for the API of How Many Meeples, an app for logging your plays of board games.  This app was constructed using Ruby on Rails using a base template provided by General Assembly.  I created my ERD, with the biggest focus being on the join table sessions, since that's the main focus of the app.  I learned about the way rails operates, and was amazed by how much it does automatically.  I had to struggle with getting my OpenReadController functionality working properly without passing a user_id.  I came up with a workaround that would allow only the user who created the session to alter the user_id.  I ultimately had to step away for a while and come back with fresh eyes (and some encourage advice from friends) in order to get it working correctly.
+
+In the future I'd like to define a custom method for sesions that will return only the sessions from a single user.  Additionally, I'd like to create a column within the games table of all the sessions that reference that game and use that data to create average scores across all users for each game.
 
 ### Authentication
 
